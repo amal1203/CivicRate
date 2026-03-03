@@ -1,7 +1,18 @@
 import React from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function home() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/rate", { replace: true });
+    }
+  }, [navigate]);
+
   return (
     <main
       className="flex min-h-[calc(100vh-64px)] items-center justify-center px-4"
@@ -13,7 +24,7 @@ export default function home() {
           <span style={{ color: "#1A6BFF" }}>CivicRate</span>
         </h1>
         <p className="mt-4 text-base sm:text-lg" style={{ color: "#1B2A4ACC" }}>
-          Discover and rate public services with your community.
+          Be the voice that transforms public services.
         </p>
 
         <div className="mt-8 flex justify-center">

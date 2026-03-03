@@ -1,4 +1,5 @@
 import bcryptjs from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 import User from '../models/user.model.js';
 
 export const checkSignupAvailability = async (req, res) => {
@@ -85,8 +86,15 @@ export const signin = async (req, res) => {
     }
 
     const { password: _, ...safeUser } = user._doc;
+    const token = jwt.sign(
+      { id: safeUser._id, username: safeUser.username },
+      process.env.JWT_SECRET || 'civicrate-dev-secret',
+      { expiresIn: '7d' }
+    );
+
     return res.status(200).json({
       message: 'Signin successful',
+      token,
       user: safeUser,
     });
   } catch (error) {

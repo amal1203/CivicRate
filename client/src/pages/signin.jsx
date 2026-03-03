@@ -64,8 +64,18 @@ export default function SignIn() {
         throw new Error(data.message || "Signin failed");
       }
 
+      localStorage.setItem("token", data.token);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          name: data.user?.username || "User",
+          phone: data.user?.phonenumber || form.phone,
+          email: data.user?.email || "",
+        })
+      );
+
       setSignedIn(true);
-      setTimeout(() => navigate("/"), 1000);
+      setTimeout(() => navigate("/rate"), 1000);
     } catch (err) {
       setError(err.message || "Something went wrong");
     } finally {
