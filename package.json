@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon api/index.js",
-    "start": "node api/index.js"
+    "start": "node api/index.js",
+    "seed:office-ratings": "node api/scripts/seedOfficeEmployeeRatings.js",
+    "seed:admins": "node api/scripts/seedAdmins.js",
+    "cleanup:visit-codes": "node api/scripts/cleanupVisitCodes.js",
+    "test:visit-flow": "node --test api/scripts/visitCodeFlow.test.js"
   },
   "repository": {
     "type": "git",

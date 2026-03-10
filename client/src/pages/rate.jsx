@@ -13,7 +13,7 @@ export default function RatePage() {
 
         <div className="mt-5 flex justify-center">
           <Link
-            to="/rate"
+            to="/find-office"
             className="rounded-full border-2 border-[#1a2744] bg-[#1a2744] px-7 py-3 text-sm font-bold text-white shadow-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#2563eb] hover:bg-[#2563eb]"
           >
             Rate our employees
